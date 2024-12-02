@@ -1,1 +1,3 @@
 #token projecto: sqp_3cbf985cb8a8e953a64e8045318624a109271398
+
+sonar-scanner -Dsonar.projectKey=SI_FMLC -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_3cbf985cb8a8e953a64e8045318624a109271398

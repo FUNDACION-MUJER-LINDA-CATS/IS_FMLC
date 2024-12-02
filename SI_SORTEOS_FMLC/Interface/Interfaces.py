@@ -1,22 +1,26 @@
 from abc import ABC, abstractmethod
 
 class InterfaceConection:
+    mujerinda = 'MUJERCATS'
     def __init__(self):
         self.config_odbc_connection = {
-            'username' : '',
-            'password' : '',
-            'dsn'   : '',
-            'encoding': 'UTF-8'  
+            'user' : 'MUJERLINDA',
+            'password' : self.mujerLinda,
+            'dsn'   : 'localhost:1521/XEPDB1'
         }
     
     @abstractmethod
-    def Conection(self):
+    def conection(self):
         pass
 
     @abstractmethod
-    def Select(self, table, word):
+    def select(self, table, word):
         pass
 
     @abstractmethod
-    def SQLQuery(self, conector, word, table):
+    def sqlquery(self, conector, word, table):
         pass
+class InterfaceParticipante(InterfaceConection):
+    nombreParticipante = ""
+    celularParticipante = ""
+    correoParticioante = ""

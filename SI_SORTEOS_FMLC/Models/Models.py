@@ -1,18 +1,10 @@
-import cx_Oracle as odbl
+import oracledb as odbl
+import sys
+sys.path.append("E:/MUJER_LINDA_CATS/SI_FMLC/SI_SORTEOS_FMLC")
 from Interface.Interfaces import InterfaceConection
 
 class ModeloConexion(InterfaceConection):
-    def __init__(self, user, password, dsn, encoding="UTF-8"):
-        super().__init__()
-        # Configuración de la conexión
-        self.config_odbc_connection = {
-            'user': user,
-            'password': password,
-            'dsn': dsn,
-            'encoding': encoding
-        }
-
-    def Conection(self):
+    def dbconn(self):
         conector = None
         try:
             # Intentar conectar a la base de datos
@@ -20,22 +12,14 @@ class ModeloConexion(InterfaceConection):
             print("Conexión exitosa a la base de datos.")
         except odbl.Error as error:
             print(f"Error al conectar a la base de datos: {error}")
-        finally:
-            return conector
-        
-
-# Bloque principal
+        return conector
 if __name__ == "__main__":
     # Configuración de conexión (reemplaza con tus credenciales)
-    user = "MUJERLINDA"
-    password = "MUJERCATS"
-    dsn = "localhost:1521/XEPDB1"
-
-    # Crear instancia de conexión
-    modelo = ModeloConexion(user, password, dsn)
+    
+    modelo = ModeloConexion()
 
     # Probar la conexión
-    conexion = modelo.Conection()
+    conexion = modelo.dbconn()
 
     if conexion:
         print("Prueba de conexión completada.")
