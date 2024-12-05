@@ -5,13 +5,14 @@ def main():
     controller = ParticipanteController()
 
     # Crear un nuevo participante
-    controller.crear_participante(
-        email="juan.perez@example.com",
-        name="Juan Pérez",
-        lastname = "Herrera Quinoes",
-        cellphone = "1234567890",
+    participante, statusconn = controller.crear_participante(
+        email="geraldinpinzonb@gmail.com",
+        name="Geraldin",
+        lastname = "Pinzón Bayona",
+        cellphone = "3213333191",
         id = "0000002"
     )
+    print(statusconn)
 
     # Mostrar participante
     #controller.mostrar_participante("juan.perez@example.com")
