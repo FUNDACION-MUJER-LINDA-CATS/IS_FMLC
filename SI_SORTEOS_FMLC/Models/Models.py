@@ -79,8 +79,8 @@ class Participante(IParticipanteModel):
             if statusconn["statusCode"] == "00":
                 with dbsession.cursor() as dbcursor:
                     sql = """INSERT INTO FMLC_PARTICIPANTE_RIFA (FMLC_CORREO, FMLC_NOMBRE, FMLC_APELLIDO, FMLC_CELULAR, FMLC_PARTICIPANTE) 
-                    VALUES (:correo, :nombre, :apellido, :celular, :participante)"""
-                    dbcursor.execute(sql, (self.FMLC_CORREO, self.FMLC_NOMBRE, self.FMLC_APELLIDO, self.FMLC_CELULAR, self.FMLC_PARTICIPANTE))
+                    VALUES (:correo, :nombre, :apellido, :celular, FMLC_PARTICIPANTE_RIFA_TX_SEQ.NEXTVAL)"""
+                    dbcursor.execute(sql, (self.FMLC_CORREO, self.FMLC_NOMBRE, self.FMLC_APELLIDO, self.FMLC_CELULAR))
                     dbsession.commit()
                     statusconn["statusDesc"] = "Participante agregado correctamente" 
         except odbl.Error as dberror:
