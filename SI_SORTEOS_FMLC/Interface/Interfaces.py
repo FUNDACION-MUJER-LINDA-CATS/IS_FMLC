@@ -1,36 +1,49 @@
 from abc import ABC, abstractmethod
 
-class InterfaceConection:
+class InterfaceConection(ABC):
     mujerlinda = 'MUJERCATS'
     def __init__(self):
         self.config_odbc_connection = {
             'user' : 'MUJERLINDA',
             'password' : self.mujerlinda,
-            'dsn'   : 'localhost:1521/XEPDB1'
+            'dsn'   : '192.168.2.100:1521/XEPDB1'
         }
     
     @abstractmethod
-    def conection(self):
+    def databaseconnection(self):
         pass
 
     @abstractmethod
-    def select(self, table, word):
+    def getColumnsByTable(self, table):
+        pass
+
+class IParticipanteModel(ABC):  
+    @abstractmethod
+    def insert(self):
+        pass
+    ''' @abstractmethod
+    def update(self):
+        pass
+    @abstractmethod
+    def getByCellphone(self, cellphone):
+        pass
+    '''
+
+class IParticipanteView(ABC):
+    @abstractmethod
+    def show_participante(self, participante):
+        pass
+
+class IParticipanteController(ABC):
+    @abstractmethod
+    def crear_participante(self, mail, name, lastname, cellphone, id):
+        pass
+
+    ''' 
+   @abstractmethod
+    def actualizar_participante(self, mail, name, lastname, cellphone):
         pass
 
     @abstractmethod
-    def sqlquery(self, conector, word, table):
-        pass
-class InterfaceParticipante(InterfaceConection):
-    nombreParticipante = ""
-    celularParticipante = ""
-    correoParticioante = ""
-    
-    @abstractmethod
-    def addparticipante(self, query, args):
-        pass
-    @abstractmethod
-    def modparticipante(self,query,args):
-        pass
-    @abstractmethod
-    def getparticipante(self, query):
-        pass
+    def mostrar_participante(self, cellphone):
+        pass'''
