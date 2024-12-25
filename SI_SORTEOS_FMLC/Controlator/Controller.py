@@ -12,8 +12,8 @@ class ParticipanteController(IParticipanteController):
     def __init__(self):
         self.view = ParticipanteView()
 
-    def crear_participante(self, email, name, lastname, cellphone, id):
+    def crear_participante(self, email, name, lastname, cellphone):
         # Crea un nuevo participante y lo inserta en la base de datos
-        new_participante = Participante(email, name, lastname, cellphone, id)
+        new_participante = Participante(email, name, lastname, cellphone, None)
         statusconn = new_participante.insert()
         return new_participante, statusconn
