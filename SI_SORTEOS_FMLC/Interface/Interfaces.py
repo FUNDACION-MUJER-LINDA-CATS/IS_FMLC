@@ -6,7 +6,7 @@ class InterfaceConection(ABC):
         self.config_odbc_connection = {
             'user' : 'MUJERLINDA',
             'password' : self.mujerlinda,
-            'dsn'   : '192.168.2.100:1521/XEPDB1'
+            'dsn'   : 'localhost:1521/XEPDB1'
         }
     
     @abstractmethod
