@@ -1,16 +1,18 @@
-from Controlator.Controller import ParticipanteController
+from Controlator.Controller import ProveedorController
 
 def main():
      # Crear el controlador
-    controller = ParticipanteController()
+    controller = ProveedorController()
 
     # Crear un nuevo participante
-    participante, statusconn = controller.crear_participante(
-        email="geraldinpinzonb@gmail.com",
-        name="Geraldin",
-        lastname = "Pinzón Bayona",
-        cellphone = "3213333191",
-        id = "0000002"
+    proveedor, statusconn = controller.crear_proveedor(
+        name="Johan Lopera",
+        mail = None,
+        cellphone = "3127937598",
+        description = "Arena de Maiz",
+        type = "Arena",
+        active = 1,
+        id = None
     )
     print(statusconn)
 
