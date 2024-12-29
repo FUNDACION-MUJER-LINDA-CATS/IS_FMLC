@@ -1,18 +1,17 @@
-from Controlator.Controller import ProveedorController
+from Controlator.ParticipanteController import ParticipanteController
 
 def main():
      # Crear el controlador
-    controller = ProveedorController()
+    controller = ParticipanteController()
 
     # Crear un nuevo participante
-    '''_, statusconn = controller.(
+    _, statusconn = controller.crear_participante(
         email="ajherrera9810@gmail.com",
         name="Arnold Julian",
         lastname = "Herrera Quiñones",
         cellphone = "3124884360")
-       ''' 
 
-    _, statusconn = controller.crear_proveedor(
+    '''_, statusconn = controller.crear_proveedor(
         name="Johan Lopera",
         mail = None,
         cellphone = "3127937598",
@@ -20,8 +19,8 @@ def main():
         type = "Arena",
         active = 1,
         id = None
-    )
-    print(statusconn)
+    )'''
+    #print(statusconn)
 
     # Mostrar participante
     #controller.mostrar_participante("juan.perez@example.com")

@@ -4,8 +4,8 @@ path_lib = os.path.dirname(os.path.abspath(__file__))
 path_l = os.path.dirname(path_lib)
 sys.path.append(path_l)
 
-from Interface.Interfaces import IParticipanteView
-from Interface.Interfaces import IProviderView
+from Interface.ParticipanteInterface import IParticipanteView
+from Interface.ProveedorInterface import IProviderView
 
 class ParticipanteView(IParticipanteView):
     def show_participante(self, participante):
