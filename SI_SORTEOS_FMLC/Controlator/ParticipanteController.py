@@ -29,7 +29,6 @@ class ParticipanteController(IParticipanteController):
         return participante, status
     
     def updateParticipante(self, participante):
-        print(f"actualizando {participante}")
         status = participante.update()
         participante, _ = participante.getById(participante.FMLC_PARTICIPANTE)
         return status
