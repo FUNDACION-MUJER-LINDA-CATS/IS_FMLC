@@ -3,7 +3,6 @@ from Interface.ParticipanteInterface import IParticipanteModel
 import oracledb as odbl
 import sys, os
 
-
 path_lib = os.path.dirname(os.path.abspath(__file__))
 path_l = os.path.dirname(path_lib)
 sys.path.append(path_l)
@@ -91,6 +90,10 @@ class Participante(IParticipanteModel):
                         participante = Participante(nombre=row[0], apellido=row[1], correo=row[2],celular=row[3], id=row[4])
                         statusconn["statusDesc"] = "Participante encontrado"
                         return participante, statusconn
+                    else:
+                        statusconn["statusCode"] = "16"
+                        statusconn["statusDesc"] = "Participante no encontrado"
+                        return statusconn
         except odbl.Error as dberror:
             error_ob, = dberror.args
             statusconn["statusCode"] = "15"
@@ -117,7 +120,7 @@ class Participante(IParticipanteModel):
                     return statusconn
         except odbl.Error as dberror:
             error_ob, = dberror.args
-            statusconn["statusCode"] = "16"
+            statusconn["statusCode"] = "17"
             statusconn["statusDesc"] = "Error al actualizar en base de datos "
             statusconn["additionalCodeStatus"] = error_ob.full_code
             statusconn["additionalStatus"] = error_ob.message
