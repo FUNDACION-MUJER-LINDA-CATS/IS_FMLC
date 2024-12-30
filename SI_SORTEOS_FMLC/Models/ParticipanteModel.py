@@ -63,11 +63,13 @@ class Participante(IParticipanteModel):
                     if row:
                         participante = Participante(nombre=row[0], apellido=row[1], correo=row[2],celular=row[3], id=row[4])
                         statusconn["statusDesc"] = "Participante encontrado"
+                        print("Estado:\t")
+                        print(statusconn)
                         return participante, statusconn
                     else:
                         statusconn["statusCode"] = "16"
                         statusconn["statusDesc"] = "Participante no encontrado"
-                        return statusconn
+                        return None, statusconn
         except odbl.Error as dberror:
             error_ob, = dberror.args
             statusconn["statusCode"] = "15"
@@ -97,7 +99,7 @@ class Participante(IParticipanteModel):
                     else:
                         statusconn["statusCode"] = "16"
                         statusconn["statusDesc"] = "Participante no encontrado"
-                        return statusconn
+                        return None, statusconn
         except odbl.Error as dberror:
             error_ob, = dberror.args
             statusconn["statusCode"] = "15"
