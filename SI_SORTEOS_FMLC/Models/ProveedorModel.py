@@ -10,12 +10,12 @@ sys.path.append(path_l)
 
 class Proveedor(IProviderModel):
     db = Database()
-    def __init__(self, nombre, correo, celular, descricion, tipo, activo, id):
+    def __init__(self, nombre, correo, celular, description, tipo, activo, id):
         self.FMLC_PRV_ID = id
         self.FMLC_PRV_NOMBRE = nombre
         self.FMLC_PRV_CORREO = correo
         self.FMLC_PRV_CELULAR = celular
-        self.FMLC_PRV_DESCRIPCION = descricion
+        self.FMLC_PRV_DESCRIPCION = description
         self.FMLC_PRV_TIPO = tipo
         self.FMLC_PRV_ACTIVO = activo
 
