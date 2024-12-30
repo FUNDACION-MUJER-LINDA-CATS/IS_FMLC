@@ -4,13 +4,15 @@ class IParticipanteModel(ABC):
     @abstractmethod
     def insert(self):
         pass
-    ''' @abstractmethod
+    @abstractmethod
     def update(self):
+        pass
+    @abstractmethod
+    def getById(self, id):
         pass
     @abstractmethod
     def getByCellphone(self, cellphone):
         pass
-    '''
 
 class IParticipanteView(ABC):
     @abstractmethod
@@ -19,14 +21,17 @@ class IParticipanteView(ABC):
 
 class IParticipanteController(ABC):
     @abstractmethod
-    def crear_participante(self, mail, name, lastname, cellphone, id):
+    def addParticipante(self, mail, name, lastname, cellphone):
         pass
-
-    ''' 
-   @abstractmethod
-    def actualizar_participante(self, mail, name, lastname, cellphone):
-        pass
-
+        
     @abstractmethod
-    def mostrar_participante(self, cellphone):
-        pass'''
+    def getParticpanteBycellPhone(self, cellphone):
+        pass
+    
+    @abstractmethod
+    def getParticpanteByid(self, id):
+        pass
+    
+    @abstractmethod
+    def updateParticipante(self, participante):
+        pass
