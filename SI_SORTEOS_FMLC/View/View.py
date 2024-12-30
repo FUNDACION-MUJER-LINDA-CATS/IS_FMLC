@@ -25,3 +25,13 @@ class ProveedorView(IProviderView):
         print(f"Descripcion: {proveedor.FMLC_PRV_DESCRIPCION}")
         print(f"Tipo: {proveedor.FMLC_PRV_TIPO}")
         print(f"Activo: {proveedor.FMLC_PRV_ACTIVO}")
+
+class ProveedorGetById(IProviderView):
+    def show_proveedor(self, proveedor):
+        print("Proveedor:")
+        print(f"Nombre: {proveedor.FMLC_PRV_NOMBRE}")
+        print(f"Correo: {proveedor.FMLC_PRV_CORREO}")
+        print(f"Celular: {proveedor.FMLC_PRV_CELULAR}")
+        print(f"Descripcion: {proveedor.FMLC_PRV_DESCRIPCION}")
+        print(f"Tipo: {proveedor.FMLC_PRV_TIPO}")
+        print(f"Activo: {proveedor.FMLC_PRV_ACTIVO}")
