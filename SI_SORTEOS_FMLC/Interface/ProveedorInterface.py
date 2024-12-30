@@ -5,8 +5,12 @@ class IProviderModel(ABC):
     def insert(self):
         pass
 
-    @abstractmethod
+    '''@abstractmethod
     def update(self):
+        pass'''
+
+    @abstractmethod
+    def query(self):
         pass
 
 class IProviderView(ABC):
@@ -17,4 +21,7 @@ class IProviderView(ABC):
 class IProviderController(ABC):
     @abstractmethod
     def crear_proveedor(self, name, mail, cellphone, description, type, active, id):
+        pass
+    @abstractmethod
+    def consultar_proveedorById(self, id):
         pass

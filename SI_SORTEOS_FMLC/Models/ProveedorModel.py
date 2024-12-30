@@ -1,5 +1,5 @@
 from pypika import Query, Table
-from DatabaseModel import Database
+from .DatabaseModel import Database
 from Interface.ProveedorInterface import IProviderModel
 import oracledb as odbl
 import sys, os
@@ -54,3 +54,31 @@ class Proveedor(IProviderModel):
             statusconn["additionalCodeStatus"] = "12"
             statusconn["additionalStatus"] = error_ob[0]
         return statusconn
+    
+    def query(self, id):
+        try:
+            dbsession, statusconn = self.db.databaseconnection()
+            if statusconn["statusCode"] == "00":
+                with dbsession.cursor() as dbcursor:
+                    sql = """SELECT * FROM FMLC_PROVEEDOR WHERE FMLC_PRV_ID = :id"""
+                    dbcursor.execute(sql, {"id":id})
+                    statusconn["statusDesc"] = "Proveedor Consultado correctamente" 
+                    row = dbcursor.fetchone()
+                    if row:
+                        proveedor = Proveedor(id=row[0], nombre=row[1], correo=row[2],celular=row[3], descricion=row[4], tipo=row[5], activo=row[6])
+                        statusconn["statusDesc"] = "Participante encontrado"
+                        return proveedor, statusconn
+        except odbl.Error as dberror:
+            error_ob, = dberror.args
+            statusconn["statusCode"] = "13"
+            statusconn["statusDesc"] = "Error al consultar en base de datos "
+            statusconn["additionalCodeStatus"] = error_ob.full_code
+            statusconn["additionalStatus"] = error_ob.message
+        except Exception as e:
+            error_ob = e.args
+            statusconn["statusCode"] = "14"
+            statusconn["statusDesc"] = "Error al procesar la transacción."
+            statusconn["additionalCodeStatus"] = "12"
+            statusconn["additionalStatus"] = error_ob[0]
+        return statusconn
+
